@@ -19,6 +19,8 @@
 | codec 码本／下游音频表 | codec 特征→索引；索引→LM 向量 | codec 中心（Mimi EMA 缓冲区）与 LM 嵌入参数 | 音频 codec 量化器与下游 LM 输入 | codec 更新与 LM 训练承担不同职责 |
 | FSQ 对照 | 量化标量坐标↔编码 ID | 固定 levels；可选学习投影及隐式码本缓冲区 | 图像／视频 codec 量化器 | 训练外围模型；不逐项学习码本中心 |
 
+[计算路径图：token 嵌入、PLE、SCONE 与 Engram](assets/injection.zh-CN.svg)对照各自的输入、查表和向量使用位置。
+
 ## 成本矩阵
 
 | 设计 | 参数／理论存储 | 加速器内存 | 访问与传输 | FLOPs | 延迟 |

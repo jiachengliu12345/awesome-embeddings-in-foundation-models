@@ -19,6 +19,8 @@ Compare the lookup key, stored object, and injection site, then account for stor
 | Codec codebook / downstream audio table | Codec feature → index; index → LM vector | Codec centroids (Mimi EMA buffers) vs LM embedding parameters | Audio codec quantizer vs downstream LM input | Codec update and LM training are separate roles |
 | FSQ contrast | Quantized scalar coordinates ↔ code ID | Fixed levels; optional learned projections and implicit codebook buffer | Image/video codec quantizer | Train surrounding model; centroids are not learned individually |
 
+The [computation-path diagram: token embeddings, PLE, SCONE, and Engram](assets/injection.en.svg) compares their inputs, lookups, and where the vectors are used.
+
 ## Cost matrix
 
 | Design | Parameters / ideal storage | Accelerator memory | Access and transfer | FLOPs | Latency |

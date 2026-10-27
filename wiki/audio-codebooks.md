@@ -5,11 +5,11 @@
 
 [简体中文](audio-codebooks.zh-CN.md) · [Sources](../SOURCES.md) · [Comparison](../COMPARISON.md)
 
+An audio codec quantizes continuous features into discrete IDs and reconstructs features from those codes. An audio language model treats the IDs as tokens and maps them through separate embedding tables. Moshi implements both steps; Cosmos provides a contrasting quantization mechanism based on fixed scalar levels.
+
 ![Audio modality path: an encoder quantizer maps audio features to discrete codes; codebook vectors reconstruct features, while a language model embeds code IDs as token inputs.](../assets/modalities.en.svg)
 
 *Caption: A codec codebook and the language model's embedding for a codec ID serve different steps. Cosmos FSQ uses fixed scalar levels, with optional learned projections.*
-
-Trace audio through quantization and a language model without confusing a codec codebook with the model's token embedding table. A codec converts continuous features to discrete IDs and back; a language model can map those IDs to vectors for prediction. These mappings have different roles.
 
 ## Moshi's codec codebook
 
@@ -19,10 +19,12 @@ In Moshi `core_vq.py`, `EuclideanCodebook` stores cluster usage and embedding su
 
 Moshi `lm.py` creates one `ScaledEmbedding` table per audio codebook, with `card + 1` rows and model width `dim`, plus a separate text table and output projection. These learned tables turn discrete IDs into language-model inputs; they are distinct from codec centroids. Audio input tables alone contain $n_q \times (card + 1) \times dim$ parameters, before text, output heads, and Transformer parameters. At inference, row lookup is only one step in audio-token prediction.
 
-## Cosmos FSQ
+## Cosmos FSQ: a fixed-grid comparison
 
 Cosmos-Tokenizer uses finite scalar quantization (FSQ): each coordinate is bounded and rounded to fixed levels, which combine into an integer index. It does not learn a centroid for every possible code. The code still materializes an `implicit_codebook` non-persistent runtime buffer and can use learned `project_in` and `project_out` layers when input and quantizer widths differ. Account for the runtime buffer and optional projections separately.
 
-State which stage you mean: codec encoder/quantizer, codec decoder, or autoregressive language model. Record codebook size and count, vector width, update rule, projection layers, ID or frame rate, and whether storage includes tables and auxiliary state. Bitrate, reconstruction quality, speed, and memory use depend on the codec, frame rate, quantizer, and downstream model.
+## Costs and evaluation objects
+
+The codec encoder, quantizer, decoder, and autoregressive language model perform different computations. Codebook count, size, and width determine the scale of tables and auxiliary state; ID or frame rate affects downstream sequence length. Bitrate and reconstruction quality describe codec trade-offs, while token-prediction and generation costs also depend on the language model.
 
 The [comparison](../COMPARISON.md) keeps codebook entries separate from token-embedding rows. Source IDs: `moshi`, `cosmos-fsq` in [SOURCES.md](../SOURCES.md).

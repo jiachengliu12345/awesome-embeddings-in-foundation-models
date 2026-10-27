@@ -20,8 +20,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Understand the shared input/output parameter object and its historical evaluation.",
-        "zh-CN": "理解输入输出共用的参数对象及早期评测。"
+        "en": "Press and Wolf analyze shared input/output embeddings and report experiments in neural language modeling and machine translation.",
+        "zh-CN": "Press 与 Wolf 分析输入输出嵌入的权重共享，并报告神经语言模型和机器翻译实验。"
       },
       "observations": [
         {
@@ -55,8 +55,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Read a conditional argument for tying instead of a universal recommendation.",
-        "zh-CN": "阅读带适用条件的权重共享论证。"
+        "en": "Connects weight tying to the distributional hypothesis and studies when input and output representations support a shared matrix.",
+        "zh-CN": "将权重共享与分布假说联系起来，研究输入和输出表示在什么条件下适合共用矩阵。"
       },
       "observations": [],
       "notes": {
@@ -83,8 +83,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Separate effective parameter load, PLE caching, and modality parameter skipping.",
-        "zh-CN": "区分有效参数载入量、PLE 缓存和模态参数跳过。"
+        "en": "Official documentation on PLE caching and accelerator-resident parameters, alongside selective loading of modality parameters in Gemma 3n.",
+        "zh-CN": "Gemma 3n 官方文档，介绍 PLE 缓存、加速器驻留参数，以及模态参数的选择性加载。"
       },
       "observations": [],
       "notes": {
@@ -111,8 +111,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Trace lookup, model projection, gating, weight tying, and modality projection.",
-        "zh-CN": "追踪查表、模型投影、门控、权重共享和模态投影。"
+        "en": "Official embedding and decoder-block code, including token lookup, per-layer projections, gates, weight tying, and modality projections.",
+        "zh-CN": "官方嵌入模块与解码器 block 源码，包含 token 查表、逐层投影、门控、权重共享和模态投影。"
       },
       "observations": [
         {
@@ -153,8 +153,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Compare precomputed contextual n-gram inputs with internal per-layer tables.",
-        "zh-CN": "比较预计算上下文 n-gram 输入与模型内部每层表。"
+        "en": "Extends input representations with frequent n-grams. A separate model produces contextual vectors that are precomputed for inference lookup.",
+        "zh-CN": "用频繁 n-gram 扩展输入表示；独立模型生成上下文向量，推理时从预计算表读取。"
       },
       "observations": [],
       "notes": {
@@ -181,8 +181,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Inspect n-gram hashing, multi-head lookup, and hidden-state-dependent fusion.",
-        "zh-CN": "检查 n-gram 哈希、多头查表与依赖隐藏状态的融合。"
+        "en": "Architecture demo of n-gram hashing, multi-head lookup, and hidden-state-dependent gating, with simplified attention and MoE components.",
+        "zh-CN": "架构演示代码，展示 n-gram 哈希、多头查表和依赖隐藏状态的门控；attention 与 MoE 使用简化占位实现。"
       },
       "observations": [
         {
@@ -224,8 +224,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Distinguish vocabulary width from model hidden width in a factorized design.",
-        "zh-CN": "在分解设计中区分词表嵌入维度与模型隐藏维度。"
+        "en": "Factorizes the vocabulary embedding matrix into a low-dimensional lookup table and a projection to the Transformer hidden width.",
+        "zh-CN": "将词表嵌入矩阵分解为低维查表与隐藏维度投影，分开设置嵌入宽度和 Transformer 宽度。"
       },
       "observations": [
         {
@@ -259,8 +259,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Compare tensor-train reconstruction with quantization of table values.",
-        "zh-CN": "比较张量列重建与表值量化。"
+        "en": "Compresses individual token vectors with Tensor Train factors and reconstructs a requested vector from its factors.",
+        "zh-CN": "用张量列（Tensor Train）因子压缩各个 token 向量，并在查表时重构所需向量。"
       },
       "observations": [],
       "notes": {
@@ -287,8 +287,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Inspect a PLE-specific codec: shared token codes and per-layer affine decoders.",
-        "zh-CN": "检查面向 PLE 的压缩：token 共享编码和每层仿射解码器。"
+        "en": "Compresses PLE with compact token codes shared across layers and layer-specific affine decoders.",
+        "zh-CN": "用跨层共享的紧凑 token 编码和每层仿射解码器压缩 PLE。"
       },
       "observations": [
         {
@@ -330,8 +330,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Find a concrete nn.Embedding INT4 group-64 recipe and its accounting limits.",
-        "zh-CN": "找到针对 nn.Embedding 的 INT4、组大小 64 配方及计量边界。"
+        "en": "An input-embedding quantization recipe using symmetric INT4 weights and group size 64, with reported Pythia-1.4B evaluations.",
+        "zh-CN": "输入嵌入量化配方，采用对称 INT4 权重和 64 的组大小，附 Pythia-1.4B 评测结果。"
       },
       "observations": [
         {
@@ -373,8 +373,8 @@
       "support": "author_report",
       "executed": false,
       "utility": {
-        "en": "Follow the PLE residual path and the author's request for controlled baselines.",
-        "zh-CN": "理解 PLE 残差路径与作者提出的受控基线问题。"
+        "en": "Raschka explains the PLE residual path and discusses baselines needed to separate architectural effects from added parameter capacity.",
+        "zh-CN": "Raschka 解释 PLE 的残差路径，并讨论如何用对照实验区分结构作用与新增参数容量的作用。"
       },
       "observations": [],
       "notes": {
@@ -401,8 +401,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Ground token lookup and output-head shape before studying extra memory paths.",
-        "zh-CN": "先理解 token 查表与输出头形状，再读额外记忆路径。"
+        "en": "A compact GPT implementation accompanying the book, with token and position embeddings, Transformer blocks, and an output head.",
+        "zh-CN": "《从零构建大语言模型》配套的简洁 GPT 实现，包含 token 与位置嵌入、Transformer block 和输出头。"
       },
       "observations": [
         {
@@ -437,8 +437,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Reason about touched rows, prefetching, caching, and simulated offload.",
-        "zh-CN": "分析访问行、预取、缓存与卸载模拟。"
+        "en": "A systems tutorial on accessed rows, prefetching, caching, and simulated offloading for n-gram memory.",
+        "zh-CN": "围绕 n-gram 记忆的系统教程，介绍访问行、预取、缓存与卸载模拟。"
       },
       "observations": [
         {
@@ -473,8 +473,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Identify continuous patch projection separately from a discrete position table.",
-        "zh-CN": "区分连续图像块投影与离散位置嵌入表。"
+        "en": "Implementation of image-patch projections and learned position embeddings in the SigLIP 2 vision encoder.",
+        "zh-CN": "SigLIP 2 视觉编码器中的图像块投影与可学习位置嵌入实现。"
       },
       "observations": [
         {
@@ -509,8 +509,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Separate codec centroids from downstream audio-token embedding tables.",
-        "zh-CN": "区分 codec 码本中心与下游音频 token 嵌入表。"
+        "en": "Mimi audio codec and Moshi language-model code, showing codec codebooks alongside separate audio token embedding tables.",
+        "zh-CN": "Mimi 音频 codec 与 Moshi 语言模型实现，可对照 codec 码本和独立的音频 token 嵌入表。"
       },
       "observations": [
         {
@@ -552,8 +552,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "See a fixed scalar grid with optional learned projections and a runtime codebook buffer.",
-        "zh-CN": "理解固定标量网格、可选学习投影与运行时码本缓冲区。"
+        "en": "Finite Scalar Quantization (FSQ) implementation with fixed scalar levels, optional learned projections, and a materialized codebook buffer.",
+        "zh-CN": "有限标量量化（FSQ）实现，包含固定标量级别、可选的可学习投影和物化码本缓冲区。"
       },
       "observations": [
         {
@@ -588,8 +588,8 @@
       "support": "implementation_inspected",
       "executed": false,
       "utility": {
-        "en": "Compare variable-width vocabulary bands and check the conditions for tying adaptive input/output weights.",
-        "zh-CN": "比较不同维度的词表分组，并检查自适应输入输出权重共享的条件。"
+        "en": "Assigns different embedding widths to vocabulary groups by frequency, then projects them to a common model width.",
+        "zh-CN": "按词频为不同词表组分配不同嵌入维度，再投影到统一的模型宽度。"
       },
       "observations": [
         {
@@ -617,6 +617,415 @@
       "notes": {
         "en": "Frequency bands have different widths. Adaptive input/output tying requires matching cutoffs, factors, and dimensions.",
         "zh-CN": "不同词频分组使用不同维度；自适应输入输出共享要求分界、因子与维度匹配。"
+      }
+    },
+    {
+      "id": "minbpe",
+      "title": {
+        "en": "Andrej Karpathy: tokenization and embedding lookup",
+        "zh-CN": "Andrej Karpathy：分词与嵌入查表"
+      },
+      "author": "Andrej Karpathy",
+      "url": "https://github.com/karpathy/minbpe/blob/master/lecture.md",
+      "published_at": null,
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "file blob ebe169f837d5b0113b7545fcda1db6dd040a1f7d",
+      "read_depth": "available_written_lecture",
+      "purposes": [
+        "tutorial"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Karpathy’s BPE tokenizer implementation and lecture materials connect text, token IDs, vocabulary size, and embedding-table rows.",
+        "zh-CN": "Karpathy 的 BPE 分词器实现与讲义，串联文本、token ID、词表大小和嵌入表行。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/karpathy/minbpe/blob/master/lecture.md",
+          "version": "ebe169f837d5b0113b7545fcda1db6dd040a1f7d",
+          "locator": "Character-level tokenization; trainable table rows; BPE introduction",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "The written lecture is partial. It covers the tokenizer-to-table boundary; the linked video and repository continue the BPE lesson.",
+        "zh-CN": "文字讲义尚未完稿，已覆盖分词器与嵌入表的衔接；后续 BPE 内容可沿视频与仓库学习。"
+      }
+    },
+    {
+      "id": "gemma3n-guide",
+      "title": {
+        "en": "Google: the Gemma 3n developer guide",
+        "zh-CN": "Google：Gemma 3n 开发者指南"
+      },
+      "author": "Omar Sanseviero; Ian Ballantyne",
+      "url": "https://developers.googleblog.com/introducing-gemma-3n-developer-guide/",
+      "published_at": "2025-06-26",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "Developer blog, 2025-06-26; live page",
+      "read_depth": "ple_section_and_architecture_context",
+      "purposes": [
+        "tutorial",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "The model team introduces the on-device motivation for PLE and explains total versus accelerator-resident parameters in Gemma 3n.",
+        "zh-CN": "模型团队介绍 PLE 的端侧部署动机，以及 Gemma 3n 总参数量与加速器驻留参数量的区别。"
+      },
+      "observations": [
+        {
+          "url": "https://developers.googleblog.com/introducing-gemma-3n-developer-guide/",
+          "version": "Developer blog, 2025-06-26; live page",
+          "locator": "Per-Layer Embeddings (PLE): Unlocking more memory efficiency",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "An introductory companion to the technical documentation. The PLE section explains CPU placement in the on-device model design.",
+        "zh-CN": "作为技术文档的入门补充；PLE 一节解释了端侧模型设计中的 CPU 存储与计算安排。"
+      }
+    },
+    {
+      "id": "longcat",
+      "title": {
+        "en": "LongCat: Scaling Embeddings Outperforms Scaling Experts",
+        "zh-CN": "LongCat：嵌入容量与专家容量的扩展比较"
+      },
+      "author": "Hong Liu et al.",
+      "url": "https://arxiv.org/html/2601.21204v2",
+      "published_at": "2026-01-29",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2601.21204v2, 2026-02-11",
+      "read_depth": "abstract_architecture_and_scaling_sections",
+      "purposes": [
+        "technical_evidence",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Compares embedding and MoE capacity allocation and describes the LongCat-Flash-Lite system design.",
+        "zh-CN": "比较嵌入与 MoE 专家的容量分配，并介绍 LongCat-Flash-Lite 的系统设计。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2601.21204v2",
+          "version": "arXiv:2601.21204v2, 2026-02-11",
+          "locator": "Architecture, embedding/expert allocation experiments, and systems optimizations",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "The claimed advantage holds in the paper’s studied regimes. Read its parameter budgets, model widths, and systems optimizations together.",
+        "zh-CN": "论文报告的优势对应其所研究的设置；应结合参数预算、模型宽度与系统优化阅读。"
+      }
+    },
+    {
+      "id": "qwen-ngram",
+      "title": {
+        "en": "Qwen3.8-Next: n-gram placement and vocabulary ablations",
+        "zh-CN": "Qwen3.8-Next：n-gram 注入位置与词表消融"
+      },
+      "author": "Qwen Team",
+      "url": "https://arxiv.org/html/2608.30320v1",
+      "published_at": "2026-08-31",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2608.30320v1",
+      "read_depth": "section_2_3_and_tables_7_to_9",
+      "purposes": [
+        "technical_evidence",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Reports ablations of n-gram injection sites and vocabulary budgets, alongside a host-memory prefetch design.",
+        "zh-CN": "报告 n-gram 注入位置与词表预算的消融实验，并介绍主机内存预取设计。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2608.30320v1",
+          "version": "arXiv:2608.30320v1",
+          "locator": "Section 2.3; Tables 7–9; host prefetch at Layer 2",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "Section 2.3 compares injection sites and vocabulary budgets. In its added-capacity experiments, loss falls while some downstream scores saturate or fluctuate.",
+        "zh-CN": "第 2.3 节比较注入位置与词表预算；在增加容量的实验中，损失下降，但部分下游指标趋于饱和或波动。"
+      }
+    },
+    {
+      "id": "staple",
+      "title": {
+        "en": "STAPLE: embedding memory for pretrained checkpoints",
+        "zh-CN": "STAPLE：为预训练检查点加入嵌入记忆"
+      },
+      "author": "Ranajoy Sadhukhan et al.",
+      "url": "https://github.com/Infini-AI-Lab/STAPLE",
+      "published_at": null,
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2610.12599v1; README blob 7e3384be54f7bb02771e9cbd0df14f0870faf68f",
+      "read_depth": "paper_method_offload_sections_and_readme",
+      "purposes": [
+        "technical_evidence",
+        "implementation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Adds token-lookup residual memory to pretrained checkpoints, with warm-up and host-offloading designs.",
+        "zh-CN": "为预训练检查点加入 token 查表残差记忆，并提供预热和主机卸载设计。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2610.12599v1",
+          "version": "arXiv:2610.12599v1",
+          "locator": "README quick start; paper Sections 2, 8–9",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        },
+        {
+          "url": "https://github.com/Infini-AI-Lab/STAPLE/blob/main/README.md",
+          "version": "7e3384be54f7bb02771e9cbd0df14f0870faf68f",
+          "locator": "Quick start and model variants",
+          "version_kind": "file_blob_sha",
+          "observed_at": "2026-10-27T05:26:45.040244Z"
+        }
+      ],
+      "notes": {
+        "en": "Retains the pretrained FFN up-projection and adds a token-indexed residual path. The paper specifies cache and serving conditions; the README gives an eight-GPU training workflow.",
+        "zh-CN": "保留预训练 FFN 上投影，加入按 token ID 查表的残差路径。论文列出缓存与推理设置；README 给出八 GPU 训练流程。"
+      }
+    },
+    {
+      "id": "count",
+      "title": {
+        "en": "COUNT: n-gram embeddings from corpus counts",
+        "zh-CN": "COUNT：用语料统计构造 n-gram 嵌入"
+      },
+      "author": "Ian Magnusson; Noah A. Smith; Pang Wei Koh",
+      "url": "https://arxiv.org/html/2610.20456v1",
+      "published_at": "2026-10-14",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2610.20456v1",
+      "read_depth": "abstract_method_and_table_swapping_sections",
+      "purposes": [
+        "technical_evidence",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Constructs n-gram embeddings from fixed corpus statistics and existing output vectors, providing an alternative to learned table rows.",
+        "zh-CN": "用固定语料统计和模型已有输出向量构造 n-gram 嵌入，为学习表行提供另一种方案。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2610.20456v1",
+          "version": "arXiv:2610.20456v1",
+          "locator": "Sections 2.2–2.3 and 5–6",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "COUNT stores counts on the host and combines existing output embeddings. The paper also studies swapping domain-specific count tables at inference.",
+        "zh-CN": "COUNT 在主机端保存统计，组合模型已有的输出嵌入；论文还研究了推理时切换领域统计表。"
+      }
+    },
+    {
+      "id": "memory-layers",
+      "title": {
+        "en": "Meta: Memory Layers at Scale",
+        "zh-CN": "Meta：大规模记忆层"
+      },
+      "author": "Vincent-Pierre Berges; Barlas Oğuz et al.",
+      "url": "https://github.com/facebookresearch/memory",
+      "published_at": null,
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2412.09764v1; README blob 4e142638886df2901996d7d77eabd914e8c963ae",
+      "read_depth": "paper_sections_1_3_6_and_readme",
+      "purposes": [
+        "technical_evidence",
+        "implementation",
+        "historical_design_comparison"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "A comparison with token-ID and n-gram lookup: trainable product-key memory queried by hidden states.",
+        "zh-CN": "作为 token ID 与 n-gram 查表的对照，介绍由隐藏状态查询的可训练乘积键记忆。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2412.09764v1",
+          "version": "arXiv:2412.09764v1",
+          "locator": "Paper Sections 1, 3, 6; README project overview",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        },
+        {
+          "url": "https://github.com/facebookresearch/memory/blob/main/README.md",
+          "version": "4e142638886df2901996d7d77eabd914e8c963ae",
+          "locator": "Project overview and configuration",
+          "version_kind": "file_blob_sha",
+          "observed_at": "2026-10-27T05:26:45.040244Z"
+        }
+      ],
+      "notes": {
+        "en": "A neighboring mechanism: queries depend on hidden states. The paper and reference implementation discuss sparse lookup, memory bandwidth, and distributed value tables.",
+        "zh-CN": "作为相邻机制对照：查询依赖隐状态。论文与参考实现讨论了稀疏查表、内存带宽和分布式值表。"
+      }
+    },
+    {
+      "id": "groupreduce",
+      "title": {
+        "en": "GroupReduce: frequency-aware low-rank compression",
+        "zh-CN": "GroupReduce：按词频分组的低秩压缩"
+      },
+      "author": "Patrick H. Chen; Si Si; Yang Li; Ciprian Chelba; Cho-Jui Hsieh",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2018/hash/a2b8a85a29b2d64ad6f47275bf1360c6-Abstract.html",
+      "published_at": null,
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "NeurIPS 2018 proceedings",
+      "read_depth": "abstract_introduction_and_method",
+      "purposes": [
+        "technical_evidence",
+        "historical_design_comparison"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Compresses vocabulary blocks with frequency-aware weighted low-rank approximation.",
+        "zh-CN": "按词频对词表分块，使用加权低秩近似压缩各块。"
+      },
+      "observations": [
+        {
+          "url": "https://proceedings.neurips.cc/paper_files/paper/2018/file/a2b8a85a29b2d64ad6f47275bf1360c6-Paper.pdf",
+          "version": "NeurIPS 2018 proceedings",
+          "locator": "Introduction and Section 3, GroupReduce",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "Groups vocabulary items by frequency, then refines weighted low-rank blocks. Experiments use historical neural language and translation models.",
+        "zh-CN": "先按词频对词表分组，再迭代优化各块的加权低秩近似；实验使用当时的神经语言模型和翻译模型。"
+      }
+    },
+    {
+      "id": "tt-embedding",
+      "title": {
+        "en": "Tensorized Embedding Layers",
+        "zh-CN": "张量化嵌入层"
+      },
+      "author": "Oleksii Hrinchuk; Valentin Khrulkov; Leyla Mirvakhabova; Elena Orlova; Ivan Oseledets",
+      "url": "https://aclanthology.org/2020.findings-emnlp.436/",
+      "published_at": "2019-01-30",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "Findings of EMNLP 2020, pp. 4847–4860; earlier preprint arXiv:1901.10787",
+      "read_depth": "abstract_introduction_and_tt_method",
+      "purposes": [
+        "technical_evidence",
+        "historical_design_comparison"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Parameterizes an entire embedding table with shared Tensor Train factors and studies end-to-end training.",
+        "zh-CN": "用共享张量列因子参数化整张嵌入表，并研究端到端训练。"
+      },
+      "observations": [
+        {
+          "url": "https://aclanthology.org/2020.findings-emnlp.436.pdf",
+          "version": "Findings of EMNLP 2020, pp. 4847–4860; earlier preprint arXiv:1901.10787",
+          "locator": "Introduction; TT-matrix and TT-embedding construction",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "Represents vocabulary and feature axes using shared TT factors and reconstructs requested rows. The paper studies training these compact layers end to end.",
+        "zh-CN": "用共享 TT 因子表示词表轴与特征轴，并重构所请求的表行；论文研究了紧凑嵌入层的端到端训练。"
+      }
+    },
+    {
+      "id": "megatron-embedding",
+      "title": {
+        "en": "Megatron-LM: vocabulary-parallel embedding lookup",
+        "zh-CN": "Megatron-LM：词表并行嵌入查表"
+      },
+      "author": "NVIDIA; Megatron-LM contributors",
+      "url": "https://github.com/NVIDIA/Megatron-LM/blob/3ddfe0fe07efc73dbdc40d4a02acbc1c1f8a9f08/megatron/core/tensor_parallel/layers.py#L351",
+      "published_at": null,
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "commit 3ddfe0fe07efc73dbdc40d4a02acbc1c1f8a9f08",
+      "read_depth": "vocab_parallel_embedding_constructor_and_forward",
+      "purposes": [
+        "implementation"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Vocabulary-parallel lookup code: row sharding, token-ID masking, local lookup, and collective communication across devices.",
+        "zh-CN": "词表并行查表实现，包含行分片、token ID 掩码、本地查表和跨设备集合通信。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/NVIDIA/Megatron-LM/blob/3ddfe0fe07efc73dbdc40d4a02acbc1c1f8a9f08/megatron/core/tensor_parallel/layers.py#L351",
+          "version": "commit 3ddfe0fe07efc73dbdc40d4a02acbc1c1f8a9f08",
+          "locator": "VocabParallelEmbedding, lines 351 onward",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "commit_sha"
+        }
+      ],
+      "notes": {
+        "en": "Shards the table across vocabulary rows. The forward path masks non-local IDs and combines results; sharding and compression solve different storage problems.",
+        "zh-CN": "沿词表行对嵌入表分片；前向路径屏蔽非本地 ID 并合并结果。分片与压缩解决的存储问题不同。"
+      }
+    },
+    {
+      "id": "tying-bias",
+      "title": {
+        "en": "Weight Tying Biases Token Embeddings Towards the Output Space",
+        "zh-CN": "权重共享如何使 token 嵌入偏向输出空间"
+      },
+      "author": "Antonio Lopardo; Avyukth Harish; Catherine Arnett; Akshat Gupta",
+      "url": "https://arxiv.org/html/2603.26663v1",
+      "published_at": "2026-03-27",
+      "observed_at": "2026-10-27T05:26:45.040244Z",
+      "version": "arXiv:2603.26663v1",
+      "read_depth": "abstract_model_controls_and_gradient_interventions",
+      "purposes": [
+        "technical_evidence",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Studies input/output gradient imbalance in tied embeddings and interventions that change their alignment with the output space.",
+        "zh-CN": "研究共享嵌入中的输入输出梯度不平衡，以及改变其输出空间对齐程度的干预。"
+      },
+      "observations": [
+        {
+          "url": "https://arxiv.org/html/2603.26663v1",
+          "version": "arXiv:2603.26663v1",
+          "locator": "Sections 3, 4–6; OLMo model/data comparison",
+          "observed_at": "2026-10-27T05:26:45.040244Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "The authors rescale input gradients and change embedding alignment, without consistent downstream gains. Some tied/untied model comparisons also differ in training data.",
+        "zh-CN": "作者重调输入梯度后，嵌入对齐发生变化，下游表现却没有一致提升。部分共享与非共享模型对照也存在训练数据差异。"
       }
     }
   ],
@@ -810,7 +1219,9 @@
         "tensorgpt",
         "optic",
         "quantization",
-        "adaptive-input"
+        "adaptive-input",
+        "groupreduce",
+        "tt-embedding"
       ],
       "claim_ids": [
         "compression-object",
@@ -821,8 +1232,8 @@
       "topic": "visual",
       "kind": "wiki",
       "title": {
-        "en": "Visual and modality projections",
-        "zh-CN": "视觉与模态投影"
+        "en": "Visual inputs and modality projections",
+        "zh-CN": "视觉输入与模态投影"
       },
       "paths": {
         "en": "wiki/visual-projections.md",
@@ -840,8 +1251,8 @@
       "topic": "audio",
       "kind": "wiki",
       "title": {
-        "en": "Codec codebooks and LM tables",
-        "zh-CN": "codec 码本与 LM 表"
+        "en": "Audio codebooks and language-model embeddings",
+        "zh-CN": "音频码本与语言模型嵌入"
       },
       "paths": {
         "en": "wiki/audio-codebooks.md",
@@ -859,8 +1270,8 @@
       "topic": "insight-capacity",
       "kind": "insight",
       "title": {
-        "en": "Lookup capacity and compute",
-        "zh-CN": "查表容量与计算"
+        "en": "PLE: table capacity and compute cost",
+        "zh-CN": "PLE 的容量与计算代价"
       },
       "paths": {
         "en": "insights/capacity-and-compute.md",
@@ -878,8 +1289,8 @@
       "topic": "insight-tying",
       "kind": "insight",
       "title": {
-        "en": "The weight-tying trade-off",
-        "zh-CN": "权重共享的取舍"
+        "en": "Weight tying: storage savings and representation constraints",
+        "zh-CN": "权重共享：存储收益与表示约束"
       },
       "paths": {
         "en": "insights/weight-tying.md",
@@ -888,7 +1299,8 @@
       "source_ids": [
         "weight-tying",
         "tying-hypothesis",
-        "gemma4"
+        "gemma4",
+        "tying-bias"
       ],
       "claim_ids": [
         "tied-table"
@@ -898,8 +1310,8 @@
       "topic": "reading",
       "kind": "guide",
       "title": {
-        "en": "Reading paths",
-        "zh-CN": "阅读路径"
+        "en": "Reading guide",
+        "zh-CN": "阅读指南"
       },
       "paths": {
         "en": "READING.md",
@@ -912,7 +1324,18 @@
         "engram",
         "quantization",
         "tinyengram",
-        "adaptive-input"
+        "adaptive-input",
+        "minbpe",
+        "gemma3n-guide",
+        "longcat",
+        "qwen-ngram",
+        "staple",
+        "count",
+        "memory-layers",
+        "groupreduce",
+        "tt-embedding",
+        "megatron-embedding",
+        "tying-bias"
       ],
       "claim_ids": [
         "adaptive-bands"
