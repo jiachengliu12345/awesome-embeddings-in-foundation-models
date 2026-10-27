@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Embedding tables · Storage explorer</title>
+<style>
+:root{--ink:#152f32;--muted:#53696a;--line:#cbd7d3;--paper:#f5f4ed;--teal:#087b75;--gold:#c56d33;--card:#fffefa}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}main{max-width:1180px;margin:auto;padding:32px 36px 50px}header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;gap:16px}.brand{font-size:12px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}button{font:inherit;color:var(--ink);border:1px solid var(--line);border-radius:24px;background:var(--card);padding:8px 18px;cursor:pointer}button:hover{border-color:var(--teal)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #00a79c;outline-offset:3px}a{color:var(--teal);text-underline-offset:3px}.intro{padding:30px 0 22px;max-width:820px}.eyebrow{color:var(--teal);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}h1{font-size:clamp(30px,4.4vw,51px);font-weight:650;letter-spacing:-.04em;line-height:1.12;margin:10px 0 16px}p{margin:10px 0;color:var(--muted)}.workbench{display:grid;grid-template-columns:340px 1fr;gap:22px}.panel{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:24px}h2{font-size:18px;line-height:1.35;margin:0 0 18px}label{display:block;font-size:13px;font-weight:650;margin:16px 0 6px}input,select{font:inherit;font-variant-numeric:tabular-nums;color:var(--ink);width:100%;background:#f9faf6;border:1px solid #adbfba;border-radius:8px;padding:10px 12px;min-height:45px}.hint{font-size:12px}.result{padding:20px 0;border-top:1px solid var(--line)}.result:first-of-type{border-top:0;padding-top:0}.result h3{font-size:15px;margin:0 0 6px;font-weight:600}.bytes{font-size:clamp(23px,3vw,34px);font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.035em}.unit{font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0}.conversions{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}.track{height:9px;background:#e8efea;border-radius:10px;margin:14px 0 6px;overflow:hidden}.fill{height:100%;background:var(--teal);width:0%;transition:width .2s}.fill.ple{background:var(--gold)}.formula{font:13px/1.6 ui-monospace,monospace;color:var(--muted);overflow-wrap:anywhere}.note{font-size:13px;border-left:3px solid var(--teal);padding-left:12px;margin-top:16px}.error{color:#9d312a;font-size:13px;min-height:22px}.foot{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px}.foot p{font-size:13px}.foot h2{margin:0 0 8px;font-size:15px}footer{border-top:1px solid var(--line);margin-top:24px;padding-top:14px;font-size:12px;display:flex;justify-content:space-between;gap:14px}.small{font-size:12px}@media(max-width:700px){main{padding:20px 18px 32px}.workbench,.foot{grid-template-columns:1fr}.intro{padding:24px 0 18px}.panel{padding:20px}.brand{max-width:190px;font-size:10px}header{align-items:flex-start}footer{flex-direction:column}h1{font-size:35px}.bytes{font-size:28px}}
+</style>
+<main>
+ <header><a class="brand" id="back" href="README.md">Awesome Embeddings<br>in Foundation Models</a><button id="language" type="button">简体中文</button></header>
+ <section class="intro"><div class="eyebrow" data-i18n="eyebrow">Explore the parameter object</div><h1 data-i18n="title">More table capacity.<br>How much storage?</h1><p data-i18n="intro">Change the dimensions to compare two table objects. PLE has one slice per layer; ordinary token lookup uses one table.</p></section>
+ <div class="workbench">
+  <section class="panel" aria-labelledby="controlsTitle"><h2 id="controlsTitle" data-i18n="controls">Table dimensions</h2>
+   <label for="vocab" data-i18n="vocab">Vocabulary size · V</label><input id="vocab" type="number" min="1" max="10000000" step="1" value="262144" inputmode="numeric">
+   <label for="dimension" data-i18n="dimension">Ordinary embedding width · d</label><input id="dimension" type="number" min="1" max="10000000" step="1" value="2048" inputmode="numeric">
+   <label for="pleDimension" data-i18n="pleDimension">PLE width per layer · dₚ</label><input id="pleDimension" type="number" min="1" max="10000000" step="1" value="256" inputmode="numeric">
+   <label for="layers" data-i18n="layers">PLE layer count · L</label><input id="layers" type="number" min="1" max="10000000" step="1" value="30" inputmode="numeric">
+   <label for="bits" data-i18n="bits">Storage bits per value · b</label><select id="bits"><option>2</option><option>4</option><option>8</option><option selected>16</option><option>32</option></select>
+   <p class="hint" data-i18n="range">Use integers from 1 to 10,000,000. Example dimensions are illustrative, not a model configuration.</p>
+   <div id="error" class="error" role="alert" aria-live="polite"></div>
+  </section>
+  <section class="panel" aria-labelledby="resultsTitle"><h2 id="resultsTitle" data-i18n="results">Ideal packed table storage</h2><div aria-live="polite">
+   <div class="result"><h3 data-i18n="ordinary">Ordinary token table</h3><div class="bytes"><span id="ordinaryBytes">—</span> <span class="unit">Bytes</span></div><div class="conversions" id="ordinaryUnits">—</div><div class="track" aria-hidden="true"><div class="fill" id="ordinaryBar"></div></div><div class="formula">V × d × b / 8</div></div>
+   <div class="result"><h3 data-i18n="ple">PLE table</h3><div class="bytes"><span id="pleBytes">—</span> <span class="unit">Bytes</span></div><div class="conversions" id="pleUnits">—</div><div class="track" aria-hidden="true"><div class="fill ple" id="pleBar"></div></div><div class="formula">V × L × dₚ × b / 8</div></div>
+  </div><p class="note" data-i18n="objectNote">These are separate objects. A model with PLE can also have an ordinary token table. The bars do not compare total model sizes.</p><p class="small" data-i18n="rounding">GB = 10⁹ Bytes. GiB = 2³⁰ Bytes. Displayed values are rounded. Sub-byte results describe ideal bit packing.</p></section>
+ </div>
+ <div class="foot"><section class="panel"><h2 data-i18n="excludesTitle">What this leaves out</h2><p data-i18n="excludes">Projection and gate weights, quantization scales, codebooks, caches, activations, allocation and alignment overhead, and training state. Real formats may pad the theoretical result.</p></section><section class="panel"><h2 data-i18n="meaningTitle">What storage cannot predict</h2><p data-i18n="meaning">This is not a GPU memory, FLOPs, latency, or model-quality estimate. Offloading changes placement and transfer; compression can add decoding work.</p><a id="comparison" href="COMPARISON.md" data-i18n="comparison">Read the cost matrix →</a></section></div>
+ <footer><span data-i18n="offline">Works offline · No network requests · 2026-10-27</span><a id="source" href="wiki/ple.md" data-i18n="source">Formula and Gemma 4 source notes</a></footer>
+</main>
+<script>
+'use strict';
+const copy={en:{eyebrow:'Explore the parameter object',title:'More table capacity.<br>How much storage?',intro:'Change the dimensions to compare two table objects. PLE has one slice per layer; ordinary token lookup uses one table.',controls:'Table dimensions',vocab:'Vocabulary size · V',dimension:'Ordinary embedding width · d',pleDimension:'PLE width per layer · dₚ',layers:'PLE layer count · L',bits:'Storage bits per value · b',range:'Use integers from 1 to 10,000,000. Example dimensions are illustrative, not a model configuration.',results:'Ideal packed table storage',ordinary:'Ordinary token table',ple:'PLE table',objectNote:'These are separate objects. A model with PLE can also have an ordinary token table. The bars do not compare total model sizes.',rounding:'GB = 10⁹ Bytes. GiB = 2³⁰ Bytes. Displayed values are rounded. Sub-byte results describe ideal bit packing.',excludesTitle:'What this leaves out',excludes:'Projection and gate weights, quantization scales, codebooks, caches, activations, allocation and alignment overhead, and training state. Real formats may pad the theoretical result.',meaningTitle:'What storage cannot predict',meaning:'This is not a GPU memory, FLOPs, latency, or model-quality estimate. Offloading changes placement and transfer; compression can add decoding work.',comparison:'Read the cost matrix →',offline:'Works offline · No network requests · 2026-10-27',source:'Formula and Gemma 4 source notes',error:'Enter positive integers up to 10,000,000 and a listed storage precision.'},'zh-CN':{eyebrow:'先看清参数对象',title:'表容量增加了，<br>需要多少存储？',intro:'调整维度，比较两类表对象。PLE 为每层提供一个切片；普通 token 输入使用一张嵌入表。',controls:'表的维度',vocab:'词表大小 · V',dimension:'普通嵌入维度 · d',pleDimension:'每层嵌入维度 · dₚ',layers:'PLE 层数 · L',bits:'每个值的存储位数 · b',range:'请输入 1 至 10,000,000 的整数。示例维度仅供演示，不代表某个模型配置。',results:'理想打包条件下的表存储量',ordinary:'普通 token 嵌入表',ple:'每层嵌入（PLE）表',objectNote:'这是两个不同对象。含 PLE 的模型也可以有普通 token 表。条形长度不比较模型总大小。',rounding:'GB = 10⁹ Bytes；GiB = 2³⁰ Bytes。显示值经过舍入。小于一字节的结果表示理想位打包。',excludesTitle:'没有包含哪些开销',excludes:'没有计入投影和门控权重、量化 scale、码本、缓存、激活、分配与对齐开销以及训练状态。实际格式可能需要填充。',meaningTitle:'存储量不能预测什么',meaning:'这不是显存、FLOPs、延迟或模型质量的估计。卸载改变存储位置与传输；压缩可能增加解码计算。',comparison:'阅读成本矩阵 →',offline:'离线可用 · 无网络请求 · 2026-10-27',source:'公式与 Gemma 4 源码说明',error:'请输入不超过 10,000,000 的正整数，并选择列出的存储精度。'}};
+let language='en';
+const $=id=>document.getElementById(id);
+function calculateStorage(v,d,l,b,p=d){
+ const values=[v,d,l,p];
+ if(values.some(x=>typeof x!=='number'||!Number.isFinite(x)||!Number.isInteger(x)||x<=0||x>10000000)||![2,4,8,16,32].includes(b))throw new RangeError('Invalid table dimensions');
+ const ordinaryBytes=v*d*b/8,pleBytes=v*l*p*b/8;
+ return {ordinaryBytes,pleBytes,ordinaryGB:ordinaryBytes/1e9,ordinaryGiB:ordinaryBytes/2**30,pleGB:pleBytes/1e9,pleGiB:pleBytes/2**30};
+}
+function recalculate(){
+ try{
+  const ids=['vocab','dimension','layers','bits','pleDimension'];
+  const values=ids.map(id=>$(id).value.trim()===''?NaN:Number($(id).value));
+  const r=calculateStorage(...values);
+  const format=x=>new Intl.NumberFormat(language,{maximumSignificantDigits:12}).format(x);
+  $('ordinaryBytes').textContent=format(r.ordinaryBytes);$('pleBytes').textContent=format(r.pleBytes);
+  $('ordinaryUnits').textContent=format(r.ordinaryGB)+' GB · '+format(r.ordinaryGiB)+' GiB';$('pleUnits').textContent=format(r.pleGB)+' GB · '+format(r.pleGiB)+' GiB';
+  const max=Math.max(r.ordinaryBytes,r.pleBytes);$('ordinaryBar').style.width=100*r.ordinaryBytes/max+'%';$('pleBar').style.width=100*r.pleBytes/max+'%';$('error').textContent='';
+ }catch(e){$('error').textContent=copy[language].error;for(const id of ['ordinaryBytes','pleBytes','ordinaryUnits','pleUnits'])$(id).textContent='—';$('ordinaryBar').style.width='0%';$('pleBar').style.width='0%';}
+}
+function setLanguage(lang){
+ language=lang==='zh-CN'?'zh-CN':'en';document.documentElement.lang=language;
+ document.title=language==='en'?'Embedding tables · Storage explorer':'嵌入表 · 存储计算器';
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const value=copy[language][el.dataset.i18n];if(el.dataset.i18n==='title')el.innerHTML=value;else el.textContent=value;});
+ $('language').textContent=language==='en'?'简体中文':'English';
+ const suffix=language==='en'?'':'.zh-CN';$('back').href='README'+suffix+'.md';$('comparison').href='COMPARISON'+suffix+'.md';$('source').href='wiki/ple'+suffix+'.md';recalculate();
+}
+window.calculateStorage=calculateStorage;window.setLanguage=setLanguage;
+for(const id of ['vocab','dimension','pleDimension','layers','bits'])$(id).addEventListener('input',recalculate);
+$('language').addEventListener('click',()=>setLanguage(language==='en'?'zh-CN':'en'));
+setLanguage(new URLSearchParams(location.search).get('lang')||'en');
+</script>
+</html>

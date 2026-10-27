@@ -1,0 +1,1544 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-27",
+  "sources": [
+    {
+      "id": "weight-tying",
+      "title": {
+        "en": "Using the Output Embedding to Improve Language Models",
+        "zh-CN": "输入输出权重共享：早期实验"
+      },
+      "author": "Ofir Press; Lior Wolf",
+      "url": "https://aclanthology.org/E17-2025/",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "EACL 2017, E17-2025",
+      "read_depth": "abstract_and_author_code_readme",
+      "purposes": [
+        "technical_evidence"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Understand the shared input/output parameter object and its historical evaluation.",
+        "zh-CN": "理解输入输出共用的参数对象及早期评测。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/ofirpress/UsingTheOutputEmbedding/blob/master/README.md",
+          "version": "cc3c7d2750dd396463d8bda0af58d75f82e5c956",
+          "locator": "tie",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Experiments cover recurrent language models and neural machine translation.",
+        "zh-CN": "实验涵盖循环神经语言模型与神经机器翻译。"
+      }
+    },
+    {
+      "id": "tying-hypothesis",
+      "title": {
+        "en": "By Tying Embeddings You Are Assuming the Distributional Hypothesis",
+        "zh-CN": "权重共享与分布假设"
+      },
+      "author": "Francesco Bertolotti; Walter Cazzola",
+      "url": "https://proceedings.mlr.press/v235/bertolotti24a.html",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "ICML 2024, PMLR235:3584–3610",
+      "read_depth": "abstract",
+      "purposes": [
+        "technical_evidence"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Read a conditional argument for tying instead of a universal recommendation.",
+        "zh-CN": "阅读带适用条件的权重共享论证。"
+      },
+      "observations": [],
+      "notes": {
+        "en": "The argument for tying depends on the relationship between semantic similarity and contextual similarity in the data.",
+        "zh-CN": "共享权重的论证取决于数据中语义相似性与上下文相似性的关系。"
+      }
+    },
+    {
+      "id": "gemma3n",
+      "title": {
+        "en": "Gemma 3n: PLE caching",
+        "zh-CN": "Gemma 3n：PLE 缓存"
+      },
+      "author": "Google",
+      "url": "https://ai.google.dev/gemma/docs/gemma-3n",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "English footer: 2025-11-01; Chinese page may differ",
+      "read_depth": "ple_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Separate effective parameter load, PLE caching, and modality parameter skipping.",
+        "zh-CN": "区分有效参数载入量、PLE 缓存和模态参数跳过。"
+      },
+      "observations": [],
+      "notes": {
+        "en": "PLE caching, MatFormer, and modality parameter skipping change different parts of the resource budget.",
+        "zh-CN": "PLE 缓存、MatFormer 与模态参数跳过分别改变资源预算的不同部分。"
+      }
+    },
+    {
+      "id": "gemma4",
+      "title": {
+        "en": "Gemma 4 Embedder and block source",
+        "zh-CN": "Gemma 4 嵌入与 block 源码"
+      },
+      "author": "Google DeepMind",
+      "url": "https://github.com/google-deepmind/gemma/blob/main/gemma/gm/nn/gemma4/_modules.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "fa50f0358d92302cfd02451cc45ab9f44336c438",
+      "read_depth": "implementation_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Trace lookup, model projection, gating, weight tying, and modality projection.",
+        "zh-CN": "追踪查表、模型投影、门控、权重共享和模态投影。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/google-deepmind/gemma/blob/main/gemma/gm/nn/gemma4/_modules.py",
+          "version": "fa50f0358d92302cfd02451cc45ab9f44336c438",
+          "locator": "gemma4",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/google-deepmind/gemma/blob/main/gemma/gm/nn/gemma4/_modules.py",
+          "version": "fa50f0358d92302cfd02451cc45ab9f44336c438",
+          "locator": "gemma-gate",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "The module defines table lookup, projection, gating, and modality input. Memory placement is a runtime concern.",
+        "zh-CN": "模块定义查表、投影、门控与模态输入；存储位置由运行时安排。"
+      }
+    },
+    {
+      "id": "scone",
+      "title": {
+        "en": "SCONE: Scaling Embedding Layers in Language Models",
+        "zh-CN": "SCONE：语言模型嵌入层扩展"
+      },
+      "author": "Da Yu et al.",
+      "url": "https://arxiv.org/html/2502.01637v3",
+      "published_at": "2025-02-03",
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "arXiv:2502.01637v3, 2025-10-23",
+      "read_depth": "method_and_limitations",
+      "purposes": [
+        "technical_evidence"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Compare precomputed contextual n-gram inputs with internal per-layer tables.",
+        "zh-CN": "比较预计算上下文 n-gram 输入与模型内部每层表。"
+      },
+      "observations": [],
+      "notes": {
+        "en": "Training includes an f-gram learner. Inference uses precomputed vectors, with index storage and transfer costs.",
+        "zh-CN": "训练包含 f-gram 学习器；推理使用预计算向量，仍需计入索引存储和传输。"
+      }
+    },
+    {
+      "id": "engram",
+      "title": {
+        "en": "Engram official architecture demo",
+        "zh-CN": "Engram 官方架构演示"
+      },
+      "author": "DeepSeek-AI",
+      "url": "https://github.com/deepseek-ai/Engram/blob/main/engram_demo_v1.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "f3ce993dee7c6b2e89c102f367f777926dba016e",
+      "read_depth": "implementation_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Inspect n-gram hashing, multi-head lookup, and hidden-state-dependent fusion.",
+        "zh-CN": "检查 n-gram 哈希、多头查表与依赖隐藏状态的融合。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/deepseek-ai/Engram/blob/main/engram_demo_v1.py",
+          "version": "f3ce993dee7c6b2e89c102f367f777926dba016e",
+          "locator": "engram",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/deepseek-ai/Engram/blob/main/engram_demo_v1.py",
+          "version": "f3ce993dee7c6b2e89c102f367f777926dba016e",
+          "locator": "engram-gate",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Architecture demo: attention, MoE, and hyper-connections are omitted or mocked.",
+        "zh-CN": "架构演示省略或模拟了 attention、MoE 和超连接组件。"
+      }
+    },
+    {
+      "id": "albert",
+      "title": {
+        "en": "ALBERT factorized embedding source",
+        "zh-CN": "ALBERT 分解式嵌入源码"
+      },
+      "author": "Google Research",
+      "url": "https://github.com/google-research/albert/blob/master/modeling.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "be7d9412536c4d751e4fe687e82abc998ec54f46",
+      "read_depth": "implementation_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Distinguish vocabulary width from model hidden width in a factorized design.",
+        "zh-CN": "在分解设计中区分词表嵌入维度与模型隐藏维度。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/google-research/albert/blob/master/modeling.py",
+          "version": "be7d9412536c4d751e4fe687e82abc998ec54f46",
+          "locator": "embedding_lookup and transformer_model embedding_hidden_mapping_in (lines 1040–1100)",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Encoder reference. A projection maps embedding width to hidden width when they differ.",
+        "zh-CN": "编码器实现参照：嵌入维度与隐藏维度不同时，使用投影映射。"
+      }
+    },
+    {
+      "id": "tensorgpt",
+      "title": {
+        "en": "TensorGPT",
+        "zh-CN": "TensorGPT：张量列嵌入压缩"
+      },
+      "author": "Mingxue Xu; Yao Lei Xu; Danilo P. Mandic",
+      "url": "https://arxiv.org/html/2307.00526v2",
+      "published_at": "2023-07-02",
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "arXiv:2307.00526v2, 2024-10-03",
+      "read_depth": "method_sections",
+      "purposes": [
+        "technical_evidence"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Compare tensor-train reconstruction with quantization of table values.",
+        "zh-CN": "比较张量列重建与表值量化。"
+      },
+      "observations": [],
+      "notes": {
+        "en": "Each token row is decomposed separately. Factor shapes, ranks, and reconstruction kernels determine its cost.",
+        "zh-CN": "逐个分解 token 行；代价取决于因子形状、秩和重建内核。"
+      }
+    },
+    {
+      "id": "optic",
+      "title": {
+        "en": "OPTIC: compressed PLE with shared token codes",
+        "zh-CN": "OPTIC：共享 token 编码的 PLE 压缩"
+      },
+      "author": "Jiacheng Liu et al.; VILA Lab",
+      "url": "https://github.com/VILA-Lab/optic",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "894852b95d2604c4edd9ebd92e017346481f2e74",
+      "read_depth": "readme_and_decoder_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Inspect a PLE-specific codec: shared token codes and per-layer affine decoders.",
+        "zh-CN": "检查面向 PLE 的压缩：token 共享编码和每层仿射解码器。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/VILA-Lab/optic/blob/main/README.md",
+          "version": "894852b95d2604c4edd9ebd92e017346481f2e74",
+          "locator": "optic",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/VILA-Lab/optic/blob/main/src/ple_eval/compact_adapter.py",
+          "version": "1e2798e0fcc1b79e5a0ae6d3afc6b22c9774b3e6",
+          "locator": "optic-decoder",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Stores token-shared codes, codebooks, and per-layer decoders. Include all three in compressed storage.",
+        "zh-CN": "保存跨层共享的 token 编码、码本与每层解码器；压缩存储需计入三者。"
+      }
+    },
+    {
+      "id": "quantization",
+      "title": {
+        "en": "llm-compressor: input embedding quantization",
+        "zh-CN": "llm-compressor：输入嵌入量化"
+      },
+      "author": "vLLM Project contributors",
+      "url": "https://github.com/vllm-project/llm-compressor/blob/main/examples/quantization_embedding/README.md",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "96227ba7a336a8067aad5b6882092fdc0335a841",
+      "read_depth": "readme_and_recipe",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Find a concrete nn.Embedding INT4 group-64 recipe and its accounting limits.",
+        "zh-CN": "找到针对 nn.Embedding 的 INT4、组大小 64 配方及计量边界。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/vllm-project/llm-compressor/blob/main/examples/quantization_embedding/README.md",
+          "version": "96227ba7a336a8067aad5b6882092fdc0335a841",
+          "locator": "quant",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/vllm-project/llm-compressor/blob/main/examples/quantization_embedding/llama3_example.py",
+          "version": "c66f70db7cf784ec9ac7e063d1091e94d7e0c717",
+          "locator": "quant-code",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "The example uses weight-only INT4 with group size 64. Storage includes packed values and quantization scales.",
+        "zh-CN": "示例为仅权重 INT4 量化，组大小 64；存储包含打包值与量化缩放因子。"
+      }
+    },
+    {
+      "id": "raschka-ple",
+      "title": {
+        "en": "Per-Layer Embeddings architecture gallery",
+        "zh-CN": "每层嵌入架构解读"
+      },
+      "author": "Sebastian Raschka",
+      "url": "https://www.sebastianraschka.com/llm-architecture-gallery/per-layer-embeddings/",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "Live page; no immutable revision exposed",
+      "read_depth": "full_short_article",
+      "purposes": [
+        "tutorial",
+        "interpretation"
+      ],
+      "support": "author_report",
+      "executed": false,
+      "utility": {
+        "en": "Follow the PLE residual path and the author's request for controlled baselines.",
+        "zh-CN": "理解 PLE 残差路径与作者提出的受控基线问题。"
+      },
+      "observations": [],
+      "notes": {
+        "en": "Explains the residual path and proposes controlled baselines for isolating the contribution of PLE.",
+        "zh-CN": "解释残差路径，并提出用于区分 PLE 贡献的受控基线。"
+      }
+    },
+    {
+      "id": "scratch",
+      "title": {
+        "en": "LLMs from Scratch: GPT implementation",
+        "zh-CN": "从零实现语言模型：GPT 代码"
+      },
+      "author": "Sebastian Raschka",
+      "url": "https://github.com/rasbt/LLMs-from-scratch/blob/main/ch04/01_main-chapter-code/gpt.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "85e37361e911bc98624f0c02f360617bde68b91b",
+      "read_depth": "gpt_model_sections",
+      "purposes": [
+        "tutorial",
+        "interpretation"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Ground token lookup and output-head shape before studying extra memory paths.",
+        "zh-CN": "先理解 token 查表与输出头形状，再读额外记忆路径。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/rasbt/LLMs-from-scratch/blob/main/ch04/01_main-chapter-code/gpt.py",
+          "version": "85e37361e911bc98624f0c02f360617bde68b91b",
+          "locator": "scratch-code",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Chapter 4 shows the token lookup, Transformer stack, and output head in a compact GPT implementation.",
+        "zh-CN": "第 4 章用紧凑的 GPT 实现展示 token 查表、Transformer 主干与输出头。"
+      }
+    },
+    {
+      "id": "tinyengram",
+      "title": {
+        "en": "TinyEngram systems lab",
+        "zh-CN": "TinyEngram 系统实验课"
+      },
+      "author": "TinyEngram contributors",
+      "url": "https://github.com/colorful-lollipop/tinyengram/blob/main/docs/lab7-systems.md",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "c4fca97a629ae57afb8f21661fd09e9b093b0906",
+      "read_depth": "systems_lab_and_prior_code_audit",
+      "purposes": [
+        "tutorial",
+        "interpretation"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Reason about touched rows, prefetching, caching, and simulated offload.",
+        "zh-CN": "分析访问行、预取、缓存与卸载模拟。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/colorful-lollipop/tinyengram/blob/main/docs/lab7-systems.md",
+          "version": "c4fca97a629ae57afb8f21661fd09e9b093b0906",
+          "locator": "tiny",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "The systems lab includes exercises, reference solutions, and offload simulations. Check the assumptions before using its estimates.",
+        "zh-CN": "系统课包含练习、参考解答和卸载模拟；使用估算时需查看假设。"
+      }
+    },
+    {
+      "id": "siglip2",
+      "title": {
+        "en": "SigLIP 2 patch and position embeddings",
+        "zh-CN": "SigLIP 2 图像块投影与位置嵌入"
+      },
+      "author": "Hugging Face contributors",
+      "url": "https://github.com/huggingface/transformers/blob/main/src/transformers/models/siglip2/modeling_siglip2.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "02f5f9629293632ea50587ac1a74afd4871abcd6",
+      "read_depth": "embedding_class_and_forward",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Identify continuous patch projection separately from a discrete position table.",
+        "zh-CN": "区分连续图像块投影与离散位置嵌入表。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/huggingface/transformers/blob/main/src/transformers/models/siglip2/modeling_siglip2.py",
+          "version": "02f5f9629293632ea50587ac1a74afd4871abcd6",
+          "locator": "siglip",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Continuous patch projection and discrete positional lookup are separate operations.",
+        "zh-CN": "连续图像块投影与离散位置查表是不同操作。"
+      }
+    },
+    {
+      "id": "moshi",
+      "title": {
+        "en": "Mimi codec and Moshi token embeddings",
+        "zh-CN": "Mimi codec 与 Moshi token 嵌入"
+      },
+      "author": "Kyutai contributors",
+      "url": "https://github.com/kyutai-labs/moshi",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "746036e1d100e397936a629da012d00b87dfc619",
+      "read_depth": "codebook_and_lm_embedding_sections",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Separate codec centroids from downstream audio-token embedding tables.",
+        "zh-CN": "区分 codec 码本中心与下游音频 token 嵌入表。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/kyutai-labs/moshi/blob/main/moshi/moshi/quantization/core_vq.py",
+          "version": "746036e1d100e397936a629da012d00b87dfc619",
+          "locator": "mimi",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/kyutai-labs/moshi/blob/main/moshi/moshi/models/lm.py",
+          "version": "209b7a59c9c086810a81a7d8b99c5233a0ad87ff",
+          "locator": "moshi-lm",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Codec EMA state and downstream token tables have separate storage and training roles.",
+        "zh-CN": "codec 的 EMA 状态与下游 token 表承担不同的存储与训练职责。"
+      }
+    },
+    {
+      "id": "cosmos-fsq",
+      "title": {
+        "en": "Cosmos Tokenizer: finite scalar quantization",
+        "zh-CN": "Cosmos Tokenizer：有限标量量化"
+      },
+      "author": "NVIDIA contributors",
+      "url": "https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/cosmos_tokenizer/modules/quantizers.py",
+      "published_at": null,
+      "observed_at": "2026-10-27T01:51:31Z",
+      "version": "38042e989f236d97736052c4a619619b636db19d",
+      "read_depth": "fsq_class",
+      "purposes": [
+        "implementation",
+        "technical_evidence"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "See a fixed scalar grid with optional learned projections and a runtime codebook buffer.",
+        "zh-CN": "理解固定标量网格、可选学习投影与运行时码本缓冲区。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/NVIDIA/Cosmos-Tokenizer/blob/main/cosmos_tokenizer/modules/quantizers.py",
+          "version": "38042e989f236d97736052c4a619619b636db19d",
+          "locator": "fsq",
+          "observed_at": "2026-10-27T01:51:31Z",
+          "version_kind": "file_blob_sha"
+        }
+      ],
+      "notes": {
+        "en": "Archived implementation of fixed scalar levels, optional learned projections, and a non-persistent codebook buffer.",
+        "zh-CN": "归档实现采用固定标量级别，可选学习投影，并分配非持久码本缓冲区。"
+      }
+    },
+    {
+      "id": "adaptive-input",
+      "title": {
+        "en": "Adaptive Input Representations",
+        "zh-CN": "自适应输入表示"
+      },
+      "author": "Alexei Baevski; Michael Auli; fairseq contributors",
+      "url": "https://arxiv.org/abs/1809.10853v3",
+      "published_at": "2018-09-28",
+      "observed_at": "2026-10-27T02:03:11Z",
+      "version": "arXiv:1809.10853v3 (2019-02-22); file SHAs below",
+      "read_depth": "paper_sections_1_to_3_and_implementation",
+      "purposes": [
+        "technical_evidence",
+        "historical_design_comparison"
+      ],
+      "support": "implementation_inspected",
+      "executed": false,
+      "utility": {
+        "en": "Compare variable-width vocabulary bands and check the conditions for tying adaptive input/output weights.",
+        "zh-CN": "比较不同维度的词表分组，并检查自适应输入输出权重共享的条件。"
+      },
+      "observations": [
+        {
+          "url": "https://github.com/facebookresearch/fairseq/blob/main/fairseq/modules/adaptive_input.py",
+          "version": "01ac4accaccc3e4625ee2ca6a17cf88df1db0ca1",
+          "locator": "AdaptiveInput.__init__, weights_for_band, forward",
+          "observed_at": "2026-10-27T02:03:11Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://github.com/facebookresearch/fairseq/blob/main/fairseq/models/transformer_lm.py",
+          "version": "1e3aa72d38a9970916f3677bb3b7871aceaeafce",
+          "locator": "build_model tie_adaptive_weights assertions",
+          "observed_at": "2026-10-27T02:03:11Z",
+          "version_kind": "file_blob_sha"
+        },
+        {
+          "url": "https://arxiv.org/pdf/1809.10853",
+          "locator": "Sections 1–3, frequency bands and weight sharing",
+          "version": "arXiv:1809.10853v3",
+          "observed_at": "2026-10-27T02:03:11Z",
+          "version_kind": "document_version"
+        }
+      ],
+      "notes": {
+        "en": "Frequency bands have different widths. Adaptive input/output tying requires matching cutoffs, factors, and dimensions.",
+        "zh-CN": "不同词频分组使用不同维度；自适应输入输出共享要求分界、因子与维度匹配。"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "tied-table",
+      "source_ids": [
+        "gemma4",
+        "weight-tying"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "A tied ordinary token table supplies input lookup and output projection.",
+        "zh-CN": "共享的普通 token 表同时供输入查表与输出投影使用。"
+      },
+      "limits": {
+        "en": "This does not tie the separate PLE table or eliminate output projection.",
+        "zh-CN": "这不意味着共享独立 PLE 表，也不消除输出投影。"
+      }
+    },
+    {
+      "id": "ple-path",
+      "source_ids": [
+        "gemma4"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "Gemma 4 prepares a token lookup plus model projection, then uses a hidden-state-gated per-layer residual update.",
+        "zh-CN": "Gemma 4 先准备 token 查表与模型投影，再在每层以隐藏状态门控加入残差更新。"
+      },
+      "limits": {
+        "en": "No runtime offload or universal quality benefit follows from this code alone.",
+        "zh-CN": "仅凭此源码不能推导运行时卸载或普遍质量收益。"
+      }
+    },
+    {
+      "id": "ngram-distinction",
+      "source_ids": [
+        "scone",
+        "engram"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "SCONE extends contextual input embeddings; Engram demo fuses hashed n-gram memory at selected internal layers.",
+        "zh-CN": "SCONE 扩展上下文输入嵌入；Engram 演示在选定内部层融合哈希 n-gram 记忆。"
+      },
+      "limits": {
+        "en": "Shared vocabulary does not establish tested composition.",
+        "zh-CN": "共用术语不能证明组合已被测试。"
+      }
+    },
+    {
+      "id": "compression-object",
+      "source_ids": [
+        "albert",
+        "tensorgpt",
+        "optic",
+        "quantization"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "Compression acts on distinct table objects and adds method-specific metadata or reconstruction.",
+        "zh-CN": "压缩作用于不同表对象，额外元数据或重建依方法而异。"
+      },
+      "limits": {
+        "en": "Compression ratios cannot establish equal runtime or quality.",
+        "zh-CN": "压缩率不能证明运行代价或质量相等。"
+      }
+    },
+    {
+      "id": "projection-not-lookup",
+      "source_ids": [
+        "siglip2",
+        "gemma4"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "Continuous patch and modality projections differ from discrete ID lookup.",
+        "zh-CN": "连续图像块及模态投影不同于离散 ID 查表。"
+      },
+      "limits": {
+        "en": "Position embeddings can still use a separate lookup table.",
+        "zh-CN": "位置嵌入仍可使用独立查表。"
+      }
+    },
+    {
+      "id": "codec-not-lm-table",
+      "source_ids": [
+        "moshi",
+        "cosmos-fsq"
+      ],
+      "status": "active",
+      "statement": {
+        "en": "Codec codebooks and downstream LM token tables have distinct computational roles.",
+        "zh-CN": "codec 码本与下游 LM token 表的计算职责不同。"
+      },
+      "limits": {
+        "en": "Fixed or EMA-updated codebooks are not necessarily trainable parameter tables.",
+        "zh-CN": "固定或 EMA 更新的码本不一定是可训练参数表。"
+      }
+    },
+    {
+      "id": "adaptive-bands",
+      "status": "active",
+      "source_ids": [
+        "adaptive-input"
+      ],
+      "statement": {
+        "en": "Adaptive input uses variable-width vocabulary bands with projections; fairseq checks matching factors, cutoffs and dimensions when tying adaptive weights.",
+        "zh-CN": "自适应输入使用不同维度的词表分组与投影；fairseq 共享自适应权重时检查因子、分界与维度匹配。"
+      },
+      "limits": {
+        "en": "Historical implementation inspected, not trained or benchmarked here; a configuration check does not establish every possible pairing.",
+        "zh-CN": "已检查历史实现，未在本地训练或测试性能；配置检查不能证明任意组合都成立。"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "topic": "token",
+      "kind": "wiki",
+      "title": {
+        "en": "Token embeddings and weight tying",
+        "zh-CN": "token 嵌入与权重共享"
+      },
+      "paths": {
+        "en": "wiki/token-embeddings.md",
+        "zh-CN": "wiki/token-embeddings.zh-CN.md"
+      },
+      "source_ids": [
+        "weight-tying",
+        "gemma4"
+      ],
+      "claim_ids": [
+        "tied-table"
+      ]
+    },
+    {
+      "topic": "ple",
+      "kind": "wiki",
+      "title": {
+        "en": "Per-Layer Embeddings",
+        "zh-CN": "每层嵌入"
+      },
+      "paths": {
+        "en": "wiki/ple.md",
+        "zh-CN": "wiki/ple.zh-CN.md"
+      },
+      "source_ids": [
+        "gemma3n",
+        "gemma4",
+        "raschka-ple"
+      ],
+      "claim_ids": [
+        "ple-path"
+      ]
+    },
+    {
+      "topic": "ngram",
+      "kind": "wiki",
+      "title": {
+        "en": "SCONE and Engram",
+        "zh-CN": "SCONE 与 Engram"
+      },
+      "paths": {
+        "en": "wiki/ngram-memory.md",
+        "zh-CN": "wiki/ngram-memory.zh-CN.md"
+      },
+      "source_ids": [
+        "scone",
+        "engram",
+        "tinyengram"
+      ],
+      "claim_ids": [
+        "ngram-distinction"
+      ]
+    },
+    {
+      "topic": "compression",
+      "kind": "wiki",
+      "title": {
+        "en": "Embedding compression",
+        "zh-CN": "嵌入压缩"
+      },
+      "paths": {
+        "en": "wiki/compression.md",
+        "zh-CN": "wiki/compression.zh-CN.md"
+      },
+      "source_ids": [
+        "albert",
+        "tensorgpt",
+        "optic",
+        "quantization",
+        "adaptive-input"
+      ],
+      "claim_ids": [
+        "compression-object",
+        "adaptive-bands"
+      ]
+    },
+    {
+      "topic": "visual",
+      "kind": "wiki",
+      "title": {
+        "en": "Visual and modality projections",
+        "zh-CN": "视觉与模态投影"
+      },
+      "paths": {
+        "en": "wiki/visual-projections.md",
+        "zh-CN": "wiki/visual-projections.zh-CN.md"
+      },
+      "source_ids": [
+        "siglip2",
+        "gemma4"
+      ],
+      "claim_ids": [
+        "projection-not-lookup"
+      ]
+    },
+    {
+      "topic": "audio",
+      "kind": "wiki",
+      "title": {
+        "en": "Codec codebooks and LM tables",
+        "zh-CN": "codec 码本与 LM 表"
+      },
+      "paths": {
+        "en": "wiki/audio-codebooks.md",
+        "zh-CN": "wiki/audio-codebooks.zh-CN.md"
+      },
+      "source_ids": [
+        "moshi",
+        "cosmos-fsq"
+      ],
+      "claim_ids": [
+        "codec-not-lm-table"
+      ]
+    },
+    {
+      "topic": "insight-capacity",
+      "kind": "insight",
+      "title": {
+        "en": "Lookup capacity and compute",
+        "zh-CN": "查表容量与计算"
+      },
+      "paths": {
+        "en": "insights/capacity-and-compute.md",
+        "zh-CN": "insights/capacity-and-compute.zh-CN.md"
+      },
+      "source_ids": [
+        "gemma4",
+        "raschka-ple"
+      ],
+      "claim_ids": [
+        "ple-path"
+      ]
+    },
+    {
+      "topic": "insight-tying",
+      "kind": "insight",
+      "title": {
+        "en": "The weight-tying trade-off",
+        "zh-CN": "权重共享的取舍"
+      },
+      "paths": {
+        "en": "insights/weight-tying.md",
+        "zh-CN": "insights/weight-tying.zh-CN.md"
+      },
+      "source_ids": [
+        "weight-tying",
+        "tying-hypothesis",
+        "gemma4"
+      ],
+      "claim_ids": [
+        "tied-table"
+      ]
+    },
+    {
+      "topic": "reading",
+      "kind": "guide",
+      "title": {
+        "en": "Reading paths",
+        "zh-CN": "阅读路径"
+      },
+      "paths": {
+        "en": "READING.md",
+        "zh-CN": "READING.zh-CN.md"
+      },
+      "source_ids": [
+        "gemma4",
+        "raschka-ple",
+        "scone",
+        "engram",
+        "quantization",
+        "tinyengram",
+        "adaptive-input"
+      ],
+      "claim_ids": [
+        "adaptive-bands"
+      ]
+    },
+    {
+      "topic": "maintenance",
+      "kind": "guide",
+      "title": {
+        "en": "Maintenance",
+        "zh-CN": "维护与贡献"
+      },
+      "paths": {
+        "en": "MAINTENANCE.md",
+        "zh-CN": "MAINTENANCE.zh-CN.md"
+      },
+      "source_ids": [],
+      "claim_ids": []
+    },
+    {
+      "topic": "updates",
+      "kind": "guide",
+      "title": {
+        "en": "Update notes",
+        "zh-CN": "更新记录"
+      },
+      "paths": {
+        "en": "UPDATES.md",
+        "zh-CN": "UPDATES.zh-CN.md"
+      },
+      "source_ids": [],
+      "claim_ids": []
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "token",
+      "name": {
+        "en": "Token table / tied head",
+        "zh-CN": "token 表／共享输出头"
+      },
+      "key": {
+        "en": "Token ID",
+        "zh-CN": "token ID"
+      },
+      "object": {
+        "en": "E ∈ R^(V×d); same E may supply logits",
+        "zh-CN": "E ∈ R^(V×d)；可同时用于 logits"
+      },
+      "injection": {
+        "en": "Before blocks; tied Eᵀ at output",
+        "zh-CN": "block 前输入；共享 Eᵀ 用于输出"
+      },
+      "training": {
+        "en": "Joint training; tying constrains two roles to one matrix",
+        "zh-CN": "联合训练；共享约束输入输出使用同一矩阵"
+      },
+      "storage": {
+        "en": "Vd independent values when tied; Vdb/8 Bytes at b bits, excluding extras",
+        "zh-CN": "共享时 Vd 个独立值；b 位时 Vdb/8 Bytes，不含其他项"
+      },
+      "accelerator": {
+        "en": "Placement dependent; tied head may require broad access to E",
+        "zh-CN": "依赖放置方式；共享输出头可能需要广泛访问 E"
+      },
+      "access": {
+        "en": "Input gathers selected rows; ordinary full logits use all vocabulary rows",
+        "zh-CN": "输入只读取所选行；通常全词表 logits 使用全部行"
+      },
+      "flops": {
+        "en": "Lookup is memory access; full output projection scales with Vd per hidden vector",
+        "zh-CN": "查表主要为内存访问；全输出投影每个隐藏向量按 Vd 扩展"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "weight-tying",
+        "gemma4"
+      ],
+      "claim_ids": [
+        "tied-table"
+      ]
+    },
+    {
+      "id": "ple",
+      "name": {
+        "en": "PLE (Gemma 4)",
+        "zh-CN": "每层嵌入（Gemma 4）"
+      },
+      "key": {
+        "en": "Token ID × layer slice",
+        "zh-CN": "token ID × 层切片"
+      },
+      "object": {
+        "en": "P ∈ R^(V×L×dₚ), plus projections/gates",
+        "zh-CN": "P ∈ R^(V×L×dₚ)，另有投影／门控"
+      },
+      "injection": {
+        "en": "Prepared outside blocks; gated update after attention + FFN in each enabled block",
+        "zh-CN": "block 外准备；启用的 block 在 attention＋FFN 后加入门控更新"
+      },
+      "training": {
+        "en": "Learn table and integration path with model",
+        "zh-CN": "随模型学习表及融合路径"
+      },
+      "storage": {
+        "en": "Table: VLdₚ values; VLdₚb/8 Bytes; excludes projections",
+        "zh-CN": "表：VLdₚ 个值；VLdₚb/8 Bytes；未计投影"
+      },
+      "accelerator": {
+        "en": "Table placement and materialized layer inputs matter; source alone does not prove offload",
+        "zh-CN": "取决于表放置和层输入的物化；该源码本身不能证明卸载"
+      },
+      "access": {
+        "en": "Token-addressed rows are predictable; projections and gates still run",
+        "zh-CN": "token 寻址可预知；仍需执行投影与门控"
+      },
+      "flops": {
+        "en": "Extra model projection and per-layer gate/projection; not zero FLOPs",
+        "zh-CN": "增加模型投影和每层门控／投影；FLOPs 不为零"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "gemma4",
+        "gemma3n"
+      ],
+      "claim_ids": [
+        "ple-path"
+      ]
+    },
+    {
+      "id": "scone",
+      "name": {
+        "en": "SCONE",
+        "zh-CN": "SCONE"
+      },
+      "key": {
+        "en": "Frequent contextual n-gram match",
+        "zh-CN": "高频上下文 n-gram 匹配"
+      },
+      "object": {
+        "en": "Input contextual vectors; output vocabulary unchanged",
+        "zh-CN": "上下文输入向量；输出词表不变"
+      },
+      "injection": {
+        "en": "Input embedding extension, before backbone",
+        "zh-CN": "主干前的输入嵌入扩展"
+      },
+      "training": {
+        "en": "Train separate f-gram learner, then precompute vectors",
+        "zh-CN": "训练独立 f-gram 学习器，再预计算向量"
+      },
+      "storage": {
+        "en": "Cached vector count × width × precision, plus index; training learner separate",
+        "zh-CN": "缓存向量数×维度×精度，另有索引；训练学习器另计"
+      },
+      "accelerator": {
+        "en": "Off-accelerator cache in paper; fixed inference accelerator resources under its setup",
+        "zh-CN": "论文将缓存置于加速器外；固定推理资源结论有实验条件"
+      },
+      "access": {
+        "en": "Match/query/transfer; cache and bandwidth constrain implementation",
+        "zh-CN": "需要匹配、查询和传输；依赖缓存与带宽"
+      },
+      "flops": {
+        "en": "Learner moved out of inference; training/precompute still cost compute",
+        "zh-CN": "学习器不在推理路径；训练和预计算仍有计算代价"
+      },
+      "latency": {
+        "en": "Author-reported query results; no universal end-to-end bound",
+        "zh-CN": "作者报告了查询结果；没有通用端到端延迟上界"
+      },
+      "source_ids": [
+        "scone"
+      ],
+      "claim_ids": [
+        "ngram-distinction"
+      ]
+    },
+    {
+      "id": "engram",
+      "name": {
+        "en": "Engram demo",
+        "zh-CN": "Engram 演示"
+      },
+      "key": {
+        "en": "Hashed normalized n-grams, multiple heads",
+        "zh-CN": "规范化 n-gram 的多头哈希"
+      },
+      "object": {
+        "en": "Hashed tables plus key/value projections and convolution",
+        "zh-CN": "哈希表、键值投影和卷积"
+      },
+      "injection": {
+        "en": "Selected internal blocks, before attention in demo",
+        "zh-CN": "所选内部 block；演示中位于 attention 前"
+      },
+      "training": {
+        "en": "Learn memory and backbone; released demo mocks backbone parts",
+        "zh-CN": "学习记忆与主干；公开演示模拟了部分主干"
+      },
+      "storage": {
+        "en": "Sum of head-table values × b/8, plus gates/projections; not V×L×dₚ",
+        "zh-CN": "各头表值总数×b/8，另计门控／投影；不是 V×L×dₚ"
+      },
+      "accelerator": {
+        "en": "Predictable addresses permit prefetch design; demo is not a host-offload benchmark",
+        "zh-CN": "地址可预知，适合设计预取；演示不是主机卸载基准"
+      },
+      "access": {
+        "en": "Multiple row reads; collisions and fusion require separate analysis",
+        "zh-CN": "读取多行；哈希碰撞与融合需分别分析"
+      },
+      "flops": {
+        "en": "Hashing, projections, hidden-state-dependent gates, convolution",
+        "zh-CN": "哈希、投影、依赖隐藏状态的门控及卷积"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "engram",
+        "tinyengram"
+      ],
+      "claim_ids": [
+        "ngram-distinction"
+      ]
+    },
+    {
+      "id": "albert",
+      "name": {
+        "en": "Factorized embeddings (ALBERT)",
+        "zh-CN": "分解式嵌入（ALBERT）"
+      },
+      "key": {
+        "en": "Token ID then linear map",
+        "zh-CN": "token ID 后接线性映射"
+      },
+      "object": {
+        "en": "V×e lookup and e×d projection",
+        "zh-CN": "V×e 表与 e×d 投影"
+      },
+      "injection": {
+        "en": "Encoder input",
+        "zh-CN": "编码器输入"
+      },
+      "training": {
+        "en": "Learn factorized parameterization during training",
+        "zh-CN": "训练时学习分解参数化"
+      },
+      "storage": {
+        "en": "Lookup/projection weights: Ve+ed when e≠d, excluding bias and other tables; reduction requires Ve+ed<Vd.",
+        "zh-CN": "e≠d 时查表与投影权重 Ve＋ed，不含 bias 和其他表；减少权重需满足 Ve＋ed＜Vd。"
+      },
+      "accelerator": {
+        "en": "Depends on table and projection placement",
+        "zh-CN": "依赖表与投影的放置"
+      },
+      "access": {
+        "en": "Read e-wide row then project",
+        "zh-CN": "读取 e 维行后投影"
+      },
+      "flops": {
+        "en": "Adds e→d projection; savings concern storage, not free computation",
+        "zh-CN": "增加 e→d 投影；节省的是存储，计算仍有代价"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "albert"
+      ],
+      "claim_ids": [
+        "compression-object"
+      ]
+    },
+    {
+      "id": "adaptive-input",
+      "name": {
+        "en": "Adaptive input",
+        "zh-CN": "自适应输入"
+      },
+      "key": {
+        "en": "Token ID in frequency-ordered bands",
+        "zh-CN": "按频率排序并分组的 token ID"
+      },
+      "object": {
+        "en": "Band tables V_g×d_g and projections d_g×d",
+        "zh-CN": "分组表 V_g×d_g 与投影 d_g×d"
+      },
+      "injection": {
+        "en": "Project selected input row to a common model width",
+        "zh-CN": "将选中输入行投影到统一模型维度"
+      },
+      "training": {
+        "en": "Train variable-capacity input; optional compatible adaptive output tying",
+        "zh-CN": "训练变容量输入；可与兼容自适应输出共享权重"
+      },
+      "storage": {
+        "en": "Sum_g(V_g d_g + d_g d) weights, before output sharing and other state",
+        "zh-CN": "权重数 Σ_g(V_g d_g＋d_g d)，未计输出共享与其他状态"
+      },
+      "accelerator": {
+        "en": "Depends on placement and band/projection temporaries",
+        "zh-CN": "依赖放置方式及分组／投影临时张量"
+      },
+      "access": {
+        "en": "Band selection, row lookup, projection and output reordering",
+        "zh-CN": "选择分组、查表、投影及恢复输出顺序"
+      },
+      "flops": {
+        "en": "Band-dependent projection; adaptive output is a separate computation",
+        "zh-CN": "投影依赖所属分组；自适应输出另行计算"
+      },
+      "latency": {
+        "en": "Not measured here; no cross-model speed conclusion",
+        "zh-CN": "本地未测量；不做跨模型速度结论"
+      },
+      "source_ids": [
+        "adaptive-input"
+      ],
+      "claim_ids": [
+        "adaptive-bands"
+      ]
+    },
+    {
+      "id": "tensorgpt",
+      "name": {
+        "en": "TensorGPT",
+        "zh-CN": "TensorGPT"
+      },
+      "key": {
+        "en": "Token ID",
+        "zh-CN": "token ID"
+      },
+      "object": {
+        "en": "Per-token tensor-train cores",
+        "zh-CN": "每个 token 的张量列核心"
+      },
+      "injection": {
+        "en": "Reconstruct requested embedding vector",
+        "zh-CN": "重建所请求的嵌入向量"
+      },
+      "training": {
+        "en": "Post-training decomposition without extra training data in paper",
+        "zh-CN": "论文在训练后分解，不用额外训练数据"
+      },
+      "storage": {
+        "en": "Store tensor-train cores; size depends on factorization and ranks",
+        "zh-CN": "存储张量列核心；大小取决于分解及秩"
+      },
+      "accelerator": {
+        "en": "Core and temporary reconstruction memory depend on runtime",
+        "zh-CN": "核心与重建临时内存依赖实现"
+      },
+      "access": {
+        "en": "Core access plus reconstruction",
+        "zh-CN": "读取核心并重建"
+      },
+      "flops": {
+        "en": "Tensor contractions replace direct dense row read",
+        "zh-CN": "张量收缩替代直接读取稠密行"
+      },
+      "latency": {
+        "en": "Paper reports device-specific latency; not measured here",
+        "zh-CN": "论文有特定设备的延迟报告；本地未测量"
+      },
+      "source_ids": [
+        "tensorgpt"
+      ],
+      "claim_ids": [
+        "compression-object"
+      ]
+    },
+    {
+      "id": "optic",
+      "name": {
+        "en": "OPTIC on PLE",
+        "zh-CN": "用于 PLE 的 OPTIC"
+      },
+      "key": {
+        "en": "Token ID shared across layer decoders",
+        "zh-CN": "跨层解码器共享 token ID"
+      },
+      "object": {
+        "en": "Token code tuples, shared codebooks, per-layer affine decoder",
+        "zh-CN": "token 编码元组、共享码本和每层仿射解码器"
+      },
+      "injection": {
+        "en": "Reconstruct PLE rows before existing integration path",
+        "zh-CN": "重建 PLE 行，再进入已有融合路径"
+      },
+      "training": {
+        "en": "Fit compressed representation against PLE output path",
+        "zh-CN": "针对 PLE 输出路径拟合压缩表示"
+      },
+      "storage": {
+        "en": "Codes + codebooks + layer decoders; denominator must include all",
+        "zh-CN": "编码＋码本＋层解码器；分母必须完整计入"
+      },
+      "accelerator": {
+        "en": "Compact arrays resident; requested rows decoded; model benchmarks unrun",
+        "zh-CN": "紧凑数组驻留，按需解码行；未运行模型基准"
+      },
+      "access": {
+        "en": "Read codes and codebooks, then affine decode",
+        "zh-CN": "读取编码和码本，再做仿射解码"
+      },
+      "flops": {
+        "en": "Adds reconstruction; does not remove existing PLE gate/projection",
+        "zh-CN": "增加重建；不移除已有 PLE 门控／投影"
+      },
+      "latency": {
+        "en": "Author reports a specified serving setup; no general speed claim",
+        "zh-CN": "作者报告了特定推理设置；不能推广为普遍加速"
+      },
+      "source_ids": [
+        "optic"
+      ],
+      "claim_ids": [
+        "compression-object"
+      ]
+    },
+    {
+      "id": "quantization",
+      "name": {
+        "en": "Input-table quantization",
+        "zh-CN": "输入表量化"
+      },
+      "key": {
+        "en": "Token ID",
+        "zh-CN": "token ID"
+      },
+      "object": {
+        "en": "Packed Embedding weights and group scales",
+        "zh-CN": "打包 Embedding 权重与分组 scale"
+      },
+      "injection": {
+        "en": "Lookup/dequantization at input",
+        "zh-CN": "输入侧查表／反量化"
+      },
+      "training": {
+        "en": "Example uses data-free weight-only INT4, group 64",
+        "zh-CN": "示例为无需校准数据的仅权重量化：INT4，组大小 64"
+      },
+      "storage": {
+        "en": "Vdb/8 packed values + scales, alignment, metadata",
+        "zh-CN": "Vdb/8 打包值＋scale、对齐和元数据"
+      },
+      "accelerator": {
+        "en": "Depends on serving kernel; README says packed table stays compact",
+        "zh-CN": "依赖推理 kernel；README 称表保持打包形式"
+      },
+      "access": {
+        "en": "Gather selected rows plus dequantization",
+        "zh-CN": "读取所选行并反量化"
+      },
+      "flops": {
+        "en": "Dequantization added; fused behavior is implementation-specific",
+        "zh-CN": "增加反量化；融合行为取决于实现"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "quantization"
+      ],
+      "claim_ids": [
+        "compression-object"
+      ]
+    },
+    {
+      "id": "visual",
+      "name": {
+        "en": "Visual patch / modality projection",
+        "zh-CN": "图像块／模态投影"
+      },
+      "key": {
+        "en": "Continuous patch or encoder features; positions use IDs",
+        "zh-CN": "连续图像块或编码特征；位置表用 ID"
+      },
+      "object": {
+        "en": "Linear map / convolution; position table is separate",
+        "zh-CN": "线性映射／卷积；位置表另列"
+      },
+      "injection": {
+        "en": "Patch encoder input, or bridge to LM width",
+        "zh-CN": "图像块编码器输入，或映射到 LM 维度"
+      },
+      "training": {
+        "en": "Learn projection; training recipe is model-specific",
+        "zh-CN": "学习投影；训练配方依模型而定"
+      },
+      "storage": {
+        "en": "Projection m×d (+bias where used); position table separate",
+        "zh-CN": "投影 m×d（使用 bias 时另计）；位置表另计"
+      },
+      "accelerator": {
+        "en": "Feature activations and image resolution matter",
+        "zh-CN": "特征激活与图像分辨率会影响内存"
+      },
+      "access": {
+        "en": "Continuous feature read and matrix multiply",
+        "zh-CN": "读取连续特征并矩阵乘"
+      },
+      "flops": {
+        "en": "Dense projection; not an ID lookup",
+        "zh-CN": "稠密投影；不是 ID 查表"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "siglip2",
+        "gemma4"
+      ],
+      "claim_ids": [
+        "projection-not-lookup"
+      ]
+    },
+    {
+      "id": "audio",
+      "name": {
+        "en": "Codec codebook / downstream audio table",
+        "zh-CN": "codec 码本／下游音频表"
+      },
+      "key": {
+        "en": "Codec feature → index; index → LM vector",
+        "zh-CN": "codec 特征→索引；索引→LM 向量"
+      },
+      "object": {
+        "en": "Codec centroids (Mimi EMA buffers) vs LM embedding parameters",
+        "zh-CN": "codec 中心（Mimi EMA 缓冲区）与 LM 嵌入参数"
+      },
+      "injection": {
+        "en": "Audio codec quantizer vs downstream LM input",
+        "zh-CN": "音频 codec 量化器与下游 LM 输入"
+      },
+      "training": {
+        "en": "Codec update and LM training are separate roles",
+        "zh-CN": "codec 更新与 LM 训练承担不同职责"
+      },
+      "storage": {
+        "en": "Codec K×c per stage; downstream K×d per stream; count separately",
+        "zh-CN": "codec 每级 K×c；下游每流 K×d；分别计量"
+      },
+      "accelerator": {
+        "en": "Codec state, LM tables, and streaming buffers separate",
+        "zh-CN": "codec 状态、LM 表和流式缓冲区分别计量"
+      },
+      "access": {
+        "en": "Codec encode/decode differs from LM token gather",
+        "zh-CN": "codec 编解码不同于 LM token 查表"
+      },
+      "flops": {
+        "en": "Codec search/decoding vs LM lookup/projection; do not conflate",
+        "zh-CN": "codec 搜索／解码与 LM 查表／投影不同"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "moshi"
+      ],
+      "claim_ids": [
+        "codec-not-lm-table"
+      ]
+    },
+    {
+      "id": "fsq",
+      "name": {
+        "en": "FSQ contrast",
+        "zh-CN": "FSQ 对照"
+      },
+      "key": {
+        "en": "Quantized scalar coordinates ↔ code ID",
+        "zh-CN": "量化标量坐标↔编码 ID"
+      },
+      "object": {
+        "en": "Fixed levels; optional learned projections and implicit codebook buffer",
+        "zh-CN": "固定 levels；可选学习投影及隐式码本缓冲区"
+      },
+      "injection": {
+        "en": "Image/video codec quantizer",
+        "zh-CN": "图像／视频 codec 量化器"
+      },
+      "training": {
+        "en": "Train surrounding model; centroids are not learned individually",
+        "zh-CN": "训练外围模型；不逐项学习码本中心"
+      },
+      "storage": {
+        "en": "Fixed grid description ≠ zero allocated codebook buffer",
+        "zh-CN": "固定网格描述不等于码本缓冲区分配为零"
+      },
+      "accelerator": {
+        "en": "Cosmos implementation materializes implicit_codebook buffer",
+        "zh-CN": "Cosmos 实现物化 implicit_codebook 缓冲区"
+      },
+      "access": {
+        "en": "Scalar quantization and index conversion",
+        "zh-CN": "标量量化与索引转换"
+      },
+      "flops": {
+        "en": "May include learned projection; depends on configuration",
+        "zh-CN": "可包含学习投影；依赖配置"
+      },
+      "latency": {
+        "en": "Unknown for a matched runtime and hardware setup.",
+        "zh-CN": "缺少相同运行环境与硬件下的测量。"
+      },
+      "source_ids": [
+        "cosmos-fsq"
+      ],
+      "claim_ids": [
+        "codec-not-lm-table"
+      ]
+    }
+  ]
+}
